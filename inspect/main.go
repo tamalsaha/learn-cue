@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"reflect"
 
 	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/cuecontext"
@@ -23,6 +24,7 @@ func main() {
 		//"d.f",
 		//"l",
 		"r",
+		"r.s",
 	}
 
 	for _, path := range paths {
@@ -33,7 +35,7 @@ func main() {
 		if err := v.Decode(&x); err != nil {
 			panic(err)
 		} else {
-			fmt.Printf("%v\n", x)
+			fmt.Printf("%v | %s\n", x, reflect.TypeOf(x).String())
 		}
 		fmt.Printf("%q\n%# v\n", p, v)
 	}
