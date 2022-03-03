@@ -76,6 +76,10 @@ func TaskFactory(val cue.Value) (flow.Runner, error) {
 		return nil, nil
 	}
 
+	if !foo.IsConcrete() {
+		return nil, nil
+	}
+
 	num, err := foo.Int64()
 	if err != nil {
 		return nil, err
