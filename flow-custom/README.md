@@ -81,5 +81,53 @@ TF:  {
 }
 TF:  a.status.bar * 3
 TF:  9
-Error: tasks.c.goo: cannot use value 9 (type int) as struct
+TF:  {
+	a: {
+		foo:   1
+		hello: "world"
+		status: {
+			bar: 2
+		}
+	}
+	b: {
+		foo: 2
+		status: {
+			bar: 3
+		}
+	}
+	c: {
+		foo: 6
+		goo: 9
+	}
+}
+TF:  {
+	foo: 6
+	goo: 9
+}
+CustomTask: 6 {
+	foo: 6
+	goo: 9
+}
+TF:  {
+	a: {
+		foo:   1
+		hello: "world"
+		status: {
+			bar: 2
+		}
+	}
+	b: {
+		foo: 2
+		status: {
+			bar: 3
+		}
+	}
+	c: {
+		foo: 6
+		status: {
+			bar: 7
+		}
+		goo: 9
+	}
+}
 ```

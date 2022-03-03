@@ -71,7 +71,7 @@ func TaskFactory(val cue.Value) (flow.Runner, error) {
 	fmt.Println("TF: ", val)
 
 	// Check that we have something that looks like a task
-	foo := val.Lookup("foo")
+	foo := val.LookupPath(cue.ParsePath("foo"))
 	if !foo.Exists() {
 		return nil, nil
 	}
