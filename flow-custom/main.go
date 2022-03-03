@@ -17,13 +17,19 @@ tasks: {
 	a: {
 		foo: 1
 		hello: string
+		status: {
+			bar: int
+		}
 	}
 	b: {
 		foo: 2
+		status: {
+			bar: int
+		}
 	}
 	c: {
-		foo: a.foo * 3
-		goo: b.foo * 3
+		foo: a.status.bar * 3
+		goo: b.status.bar * 3
 	}
 }
 `
@@ -95,7 +101,9 @@ func (C *CustomTask) Run(t *flow.Task, pErr error) error {
 
 	// Do some work
 	next := map[string]interface{}{
-		"bar": C.Val + 1,
+		"status": map[string]interface{}{
+			"bar": C.Val + 1,
+		},
 	}
 	hello := val.Lookup("hello")
 	if hello.Exists() {
