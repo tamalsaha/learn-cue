@@ -75,7 +75,6 @@ func TaskFactory(val cue.Value) (flow.Runner, error) {
 	if !foo.Exists() {
 		return nil, nil
 	}
-
 	if !foo.IsConcrete() {
 		return nil, nil
 	}
