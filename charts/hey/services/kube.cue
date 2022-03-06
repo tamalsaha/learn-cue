@@ -43,18 +43,6 @@ deployment: [ID=_]: {
 
 #Component: string
 
-daemonSet: [ID=_]: _spec & {
-	apiVersion: "apps/v1"
-	kind:       "DaemonSet"
-	_name:      ID
-}
-
-statefulSet: [ID=_]: _spec & {
-	apiVersion: "apps/v1"
-	kind:       "StatefulSet"
-	_name:      ID
-}
-
 deployment: [ID=_]: _spec & {
 	apiVersion: "apps/v1"
 	kind:       "Deployment"
@@ -91,7 +79,7 @@ _spec: spec: template: spec: containers: [...{
 	}]
 }]
 
-for x in [deployment, daemonSet, statefulSet] for k, v in x {
+for x in [deployment] for k, v in x {
 	service: "\(k)": {
 		spec: selector: v.spec.template.metadata.labels
 

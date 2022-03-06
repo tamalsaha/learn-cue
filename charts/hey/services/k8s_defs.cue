@@ -7,5 +7,3 @@ import (
 
 service: [string]:     v1.#Service
 deployment: [string]:  apps_v1.#Deployment
-daemonSet: [string]:   apps_v1.#DaemonSet
-statefulSet: [string]: apps_v1.#StatefulSet
