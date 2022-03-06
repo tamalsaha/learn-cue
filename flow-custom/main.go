@@ -110,7 +110,7 @@ func (C *CustomTask) Run(t *flow.Task, pErr error) error {
 			"bar": C.Val + 1,
 		},
 	}
-	hello := val.Lookup("hello")
+	hello := val.LookupPath(cue.ParsePath("hello"))
 	if hello.Exists() {
 		next["hello"] = "world"
 	}
